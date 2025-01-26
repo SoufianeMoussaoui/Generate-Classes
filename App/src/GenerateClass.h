@@ -17,10 +17,11 @@ using namespace std;
 class GenerateClass{
 private:
 	string className;
-	unordered_map<string, any> attributesListe;
+	bool port;
 public:
+	unordered_map<string, any> attributesListe;
 	GenerateClass() = default;
-	GenerateClass(const string&);
+	GenerateClass(const string&, bool);
 	~GenerateClass() = default;
 
 	void setClassName(string);
@@ -30,15 +31,23 @@ public:
 	void createFile();
 
     bool attributeExiste();
-	void createGetter(ofstream&);
-	void createSetter(ofstream&);
+	void createGetter(vector<string>&);
+	void createSetter(vector<string>&);
 
     void copieFile();
 	void clearFile();
     friend string getDesktopPath();
     void setAttribute();
+
+
+    // only get call if attribute existe
+    string declareDisplayFunction(); 
+    string defDisplayFunction(); 
 	
 };
+
+
+
 
 // Function to simplfier the complexity : 
 
@@ -46,7 +55,8 @@ public:
 string constructorByDefault(string&);
 string constructorByCopie(string&);
 string destructor(string&);
-
+string constructorByArgument(string&);
+string getVarType(const any&);
 
 
 
@@ -76,5 +86,20 @@ If the user need attributes :
     		ClassName(type, ...)
 
 */
+
+
+
+/*
+
+["type getVarName() cosnt;", ... ]
+
+["void setVarName(type);", ...]
+
+*/
+
+
+
+
+
 
 
