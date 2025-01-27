@@ -1,5 +1,5 @@
 #include "GenerateClass.h"
-#include "../ClassDef/GenerateClassDef.h"
+#include "GenerateClassDef.h"
 #include <iostream>
 #include <fstream>
 #include <vector>
